@@ -9,11 +9,6 @@ A full-stack **Job Portal** web application built with **React.js**, **Node.js**
 
 ---
 
-## 🔹 Live Demo
-
-*(If hosted, replace with your link. Otherwise, leave for future deployment)*
-
-[Live Demo Link](https://your-deployed-link.com)
 
 ---
 
@@ -92,9 +87,7 @@ MONGO_URI=your_mongodb_connection_string
 PORT=5000
 npm start
 ```
-🔹 Screenshots
 
-(Add screenshots of your homepage, jobs page, candidate dashboard, and employer dashboard here)
 🔹 Future Enhancements
 
 Search filters by location, experience, and salary
