@@ -58,3 +58,55 @@ A full-stack **Job Portal** web application built with **React.js**, **Node.js**
 ---
 
 ## 🔹 Project Structure
+job-portal/
+├─ backend/
+│ ├─ models/
+│ │ ├─ User.js
+│ │ ├─ Job.js
+│ │ └─ Application.js
+│ ├─ routes/
+│ │ ├─ authRoutes.js
+│ │ ├─ jobRoutes.js
+│ │ ├─ candidateRoutes.js
+│ │ └─ applicationRoutes.js
+│ ├─ uploads/ # Uploaded resumes
+│ └─ server.js
+├─ frontend/
+│ ├─ src/
+│ │ ├─ components/ # Navbar, JobCard, SearchBar, etc.
+│ │ ├─ pages/ # HomePage.js, JobsPage.js, CandidateDashboard.js, EmployerDashboard.js
+│ │ └─ Styles/ # CSS files
+│ └─ package.json
+└─ README.md
+
+---
+
+## 🔹 Installation
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/job-portal.git
+cd job-portal
+MONGO_URI=your_mongodb_connection_string
+PORT=5000
+npm start
+```
+🔹 Screenshots
+
+(Add screenshots of your homepage, jobs page, candidate dashboard, and employer dashboard here)
+🔹 Future Enhancements
+
+Search filters by location, experience, and salary
+
+Email notifications for application status
+
+Profile editing for candidates and employers
+
+Resume preview before uploading
+
+Role-based authentication (Admin, Candidate, Employer)
+
+Job recommendations based on skills
+# Author
+Leelavathi
