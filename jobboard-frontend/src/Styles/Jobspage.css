@@ -1,0 +1,14 @@
+.jobs-container {
+  padding: 40px;
+  text-align: center;
+}
+
+.jobs-container h2 {
+  margin-bottom: 30px;
+}
+
+.jobs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}

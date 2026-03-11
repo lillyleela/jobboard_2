@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "../Styles/CandidateDashboard.css";
 
 function EmployerDashboard() {
@@ -9,14 +10,23 @@ function EmployerDashboard() {
   const [jobData, setJobData] = useState({
     title: "",
     company: "",
-    description: "",
     location: "",
+    salary: "",
+    experience: "",
+    skills: "",
+    jobType: "",
+    description: "",
   });
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchJobs();
     fetchApplications();
   }, []);
+  const handleLogout = () => {
+    localStorage.removeItem("userId");
+    navigate("/");
+  };
 
   const fetchJobs = async () => {
     const res = await axios.get("http://localhost:5000/api/jobs");
@@ -31,9 +41,34 @@ function EmployerDashboard() {
   const handleChange = (e) => {
     setJobData({ ...jobData, [e.target.name]: e.target.value });
   };
+  const deleteJob = async (id) => {
+    try {
+      await axios.delete(`http://localhost:5000/api/jobs/${id}`);
+
+      alert("Job deleted successfully");
+
+      fetchJobs();
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const postJob = async (e) => {
     e.preventDefault();
+    // Validation
+    if (
+      !jobData.title ||
+      !jobData.company ||
+      !jobData.location ||
+      !jobData.salary ||
+      !jobData.experience ||
+      !jobData.skills ||
+      !jobData.jobType ||
+      !jobData.description
+    ) {
+      alert("Please fill all fields");
+      return;
+    }
 
     await axios.post("http://localhost:5000/api/jobs", jobData);
 
@@ -41,8 +76,12 @@ function EmployerDashboard() {
     setJobData({
       title: "",
       company: "",
-      description: "",
       location: "",
+      salary: "",
+      experience: "",
+      skills: "",
+      jobType: "",
+      description: "",
     });
 
     fetchJobs();
@@ -51,6 +90,11 @@ function EmployerDashboard() {
   return (
     <div className="dashboard">
       <h1 className="title">Employer Dashboard</h1>
+      <div className="logout-container">
+        <button className="logout-btn" onClick={handleLogout}>
+          Logout
+        </button>
+      </div>
 
       {/* Post Job */}
       <div className="profile-card">
@@ -81,13 +125,47 @@ function EmployerDashboard() {
             onChange={handleChange}
           />
 
+          <input
+            type="text"
+            name="salary"
+            placeholder="Salary"
+            value={jobData.salary}
+            onChange={handleChange}
+          />
+
+          <input
+            type="text"
+            name="experience"
+            placeholder="Experience Required"
+            value={jobData.experience}
+            onChange={handleChange}
+          />
+
+          <input
+            type="text"
+            name="skills"
+            placeholder="Skills Required"
+            value={jobData.skills}
+            onChange={handleChange}
+          />
+
+          <select
+            name="jobType"
+            value={jobData.jobType}
+            onChange={handleChange}
+          >
+            <option value="">Select Job Type</option>
+            <option value="Full Time">Full Time</option>
+            <option value="Part Time">Part Time</option>
+            <option value="Internship">Internship</option>
+          </select>
+
           <textarea
             name="description"
             placeholder="Job Description"
             value={jobData.description}
             onChange={handleChange}
           />
-
           <button type="submit">Post Job</button>
         </form>
       </div>
@@ -101,6 +179,9 @@ function EmployerDashboard() {
             <h3>{job.title}</h3>
             <p>{job.company}</p>
             <p>{job.location}</p>
+            <button className="delete-btn" onClick={() => deleteJob(job._id)}>
+              Delete Job
+            </button>
           </div>
         ))}
       </div>
@@ -120,8 +201,8 @@ function EmployerDashboard() {
         <tbody>
           {applications.map((app) => (
             <tr key={app._id}>
-              <td>{app.candidateName}</td>
-              <td>{app.jobTitle}</td>
+              <td>{app.candidateId?.name}</td>
+              <td>{app.jobId?.title}</td>
               <td>{app.status}</td>
             </tr>
           ))}
