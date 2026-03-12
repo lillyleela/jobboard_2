@@ -45,7 +45,7 @@ This project demonstrates a **complete MERN stack implementation** including aut
 # 📂 Project Structure
 
 ## 📂 Project Structure
-
+```text
 job-portal
 │
 ├── backend
@@ -81,7 +81,7 @@ job-portal
 │
 └── README.md
 
----
+```
 
 # ⚙️ Installation & Setup
 
