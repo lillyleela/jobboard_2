@@ -44,30 +44,42 @@ This project demonstrates a **complete MERN stack implementation** including aut
 
 # 📂 Project Structure
 
+## 📂 Project Structure
+
+job-portal
 │
-├── backend/
-│ ├── models/
-│ │ ├── User.js
-│ │ ├── Job.js
-│ │ └── Application.js
-│ │
-│ ├── routes/
-│ │ ├── authRoutes.js
-│ │ ├── jobRoutes.js
-│ │ ├── candidateRoutes.js
-│ │ └── applicationRoutes.js
-│ │
-│ ├── uploads/
-│ └── server.js
+├── backend
+│   ├── models
+│   │   ├── User.js
+│   │   ├── Job.js
+│   │   └── Application.js
+│   │
+│   ├── routes
+│   │   ├── authRoutes.js
+│   │   ├── jobRoutes.js
+│   │   ├── candidateRoutes.js
+│   │   └── applicationRoutes.js
+│   │
+│   ├── uploads
+│   │
+│   ├── .env
+│   ├── package.json
+│   └── server.js
 │
-├── frontend/
-│ ├── components/
-│ ├── pages/
-│ ├── Styles/
-│ └── App.js
+├── frontend
+│   ├── public
+│   │   └── index.html
+│   │
+│   ├── src
+│   │   ├── components
+│   │   ├── pages
+│   │   ├── Styles
+│   │   ├── App.js
+│   │   └── index.js
+│   │
+│   └── package.json
 │
 └── README.md
-
 
 ---
 
