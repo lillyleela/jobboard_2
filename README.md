@@ -99,17 +99,17 @@ cd backend
 npm install
 
 Create a `.env` file inside backend folder:
-MONGO_URI=mongodb://localhost:27017/jobportal
+MONGO_URI=your_mongodb_connection_string
 PORT=5000
 
 Start backend server:
 npm start
 
+Run security check:
+npm audit
 
-Backend will run at:
-
-
-http://localhost:5000
+Fix vulnerabilities automatically:
+npm audit fix
 
 ---
 
@@ -158,10 +158,8 @@ Fetch all jobs:
 curl http://localhost:5000/api/jobs
 Create a job:
 
-
-curl -X POST http://localhost:5000/api/jobs
-
--H "Content-Type: application/json"
+curl -X POST http://localhost:5000/api/jobs \
+-H "Content-Type: application/json" \
 -d '{"title":"Frontend Developer","company":"Tech Solutions"}'
 
 
@@ -199,6 +197,14 @@ mongodb+srv://username:password@cluster.mongodb.net/jobportal
 
 ---
 
+# 🔒 Security Checks
+
+Basic security checks were performed for this project.
+
+- Sensitive information such as database connection strings are stored in `.env` files.
+- `.env` is added to `.gitignore` to prevent secrets from being pushed to GitHub.
+- Dependencies were checked using `npm audit`.
+- No API keys or passwords are hardcoded in the repository.
 # 📈 Future Improvements
 
 - Email notifications for applications
