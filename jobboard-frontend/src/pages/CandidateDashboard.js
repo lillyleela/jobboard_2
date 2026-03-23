@@ -28,14 +28,16 @@ function CandidateDashboard() {
     const userId = localStorage.getItem("userId");
 
     const res = await axios.get(
-      `http://localhost:5000/api/candidate/profile/${userId}`,
+      `https://jobboard-2-ogr1.onrender.com/api/candidate/profile/${userId}`,
     );
 
     setProfile(res.data);
   };
 
   const fetchJobs = async () => {
-    const res = await axios.get("http://localhost:5000/api/jobs");
+    const res = await axios.get(
+      "https://jobboard-2-ogr1.onrender.com/api/jobs",
+    );
     setJobs(res.data);
   };
 
@@ -50,7 +52,9 @@ function CandidateDashboard() {
   // };
   const fetchApplications = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/applications");
+      const res = await axios.get(
+        "https://jobboard-2-ogr1.onrender.com/api/applications",
+      );
       setApplications(res.data);
     } catch (error) {
       console.error(error);
@@ -70,7 +74,10 @@ function CandidateDashboard() {
     formData.append("candidateId", userId);
     formData.append("resume", resume);
 
-    await axios.post("http://localhost:5000/api/applications", formData);
+    await axios.post(
+      "https://jobboard-2-ogr1.onrender.com/api/applications",
+      formData,
+    );
 
     alert("Application submitted successfully");
 

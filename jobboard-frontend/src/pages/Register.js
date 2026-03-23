@@ -26,12 +26,15 @@ function Register() {
     }
 
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/register", {
-        name,
-        email,
-        password,
-        role,
-      });
+      const res = await axios.post(
+        "https://jobboard-2-ogr1.onrender.com/api/auth/register",
+        {
+          name,
+          email,
+          password,
+          role,
+        },
+      );
 
       setMessage(res.data.message);
       navigate("/");

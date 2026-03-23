@@ -11,7 +11,7 @@ function HomePage() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/jobs")
+      .get("https://jobboard-2-ogr1.onrender.com/api/jobs")
       .then((res) => {
         console.log(res.data); // check data
         setJobs(res.data);

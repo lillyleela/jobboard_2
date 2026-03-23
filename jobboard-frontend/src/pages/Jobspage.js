@@ -9,7 +9,9 @@ function JobsPage() {
 
   const fetchJobs = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/jobs");
+      const res = await axios.get(
+        "https://jobboard-2-ogr1.onrender.com/api/jobs",
+      );
       setJobs(res.data);
     } catch (error) {
       console.error("Error fetching jobs:", error);
